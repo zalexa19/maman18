@@ -3,19 +3,23 @@
  */
 public class BinNode
 {
-    private int _value;
+    private String _value;
     private BinNode _left;
     private BinNode _right;
     private BinNode _parent;
-    //Empty constructor
-    public BinNode () {}
+    private Color  _color;
 
-    public BinNode (int v)
+    //Empty constructor
+    public BinNode ()
+    {
+        this(null,null,null,null);
+        this._color = Color.BLACK;
+    }
+    public BinNode (String v)
     {
         this(v,null,null,null);
     }
-
-    public BinNode (int v, BinNode left, BinNode right,BinNode parent)
+    public BinNode (String v, BinNode left, BinNode right,BinNode parent)
     {
         this._value=v;
         this._left=left;
@@ -49,11 +53,19 @@ public class BinNode
         this._parent = _parent;
     }
 
-    public int get_value() {
+    public String get_value() {
         return _value;
     }
 
-    public void set_value(int _value) {
+    public void set_value(String _value) {
         this._value = _value;
+    }
+
+    public Color get_color() {
+        return _color;
+    }
+
+    public void set_color(Color _color) {
+        this._color = _color;
     }
 }

@@ -2,7 +2,7 @@
  * Created by Alexa on 15/02/2015.
  */
 public class BinaryTree {
-    private BinNode _root;
+    protected BinNode _root;
 
     public BinaryTree(BinNode root) {
         this._root = root;
@@ -18,13 +18,16 @@ public class BinaryTree {
         //Root is null
         if (_root == null) {
             _root = node;
-        } else {
+        } else
+        {
             BinNode index = _root;
             BinNode parentI = null;
-            while (index != null) {
+            while (index != null)
+            {
                 parentI = index;
 
-                if (node.get_value() > index.get_value()) {
+                if (node.get_value().compareTo(index.get_value())>0)
+                {
                     index = index.get_right();
                 } else {
                     index = index.get_left();
@@ -32,7 +35,8 @@ public class BinaryTree {
             }
 
             node.set_parent(parentI);
-            if (node.get_value() > parentI.get_value()) {
+            if (node.get_value().compareTo(parentI.get_value())>0)
+            {
                 parentI.set_right(node);
             } else {
                 parentI.set_left(node);
@@ -71,7 +75,7 @@ public class BinaryTree {
         return  index;
     }
 
-    private void printInOrder (BinNode node)
+    protected void printInOrder (BinNode node)
     {
         if( node != null)
         {
