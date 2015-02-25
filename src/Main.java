@@ -1,18 +1,19 @@
-import java.util.Random;
 
 public class Main
 {
 
     public static void main(String[] args) {
 
-        BinNode root = new BinNode("Alex");
+        RBTree alexTree = new RBTree();
 
-        BinaryTree alexTree = new BinaryTree(root);
+        String [] words = { "stas", "hat", "cat", "louie", "fruhstuk", "banana", "aadwark", "llz","yoyo","derp"};
+        for(int i=0; i<words.length; i++)
+        {
+            alexTree.rbInsert(new BinNode(words[i]));
+        }
 
-
-
-
-
+        alexTree.printInOrder();
+        System.out.println();
     }
 
 }

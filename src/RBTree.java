@@ -1,18 +1,22 @@
 /**
  * Created by Alexa on 25/02/2015.
  */
-public class RBTree extends BinaryTree
+public class RBTree
 {
-
     private static BinNode Neil = new BinNode();
+    private BinNode _root;
 
-
-    public RBTree(BinNode root)
+    public RBTree()
     {
-        super(root);
+        _root = Neil;
     }
 
-//Left Rotate
+    public BinNode get_root()
+    {
+        return this._root;
+    }
+
+    //Left Rotate
     private void leftRotate(BinNode x)
     {
         BinNode y=x.get_right();
@@ -74,8 +78,19 @@ public class RBTree extends BinaryTree
         x.set_parent(y);
     }
 
-    private void rbInsert (BinNode z)
+    public void rbInsert (BinNode z)
     {
+        //empty tree
+        if(_root == Neil)
+        {
+            _root = z;
+            z.set_left(Neil);
+            z.set_right(Neil);
+            z.set_parent(Neil);
+            return;
+        }
+
+
         BinNode y = Neil;
         BinNode x = _root;
 
@@ -167,6 +182,49 @@ public class RBTree extends BinaryTree
         _root.set_color(Color.BLACK);
     }
 
+    protected void printInOrder (BinNode node)
+    {
+        if( node != Neil)
+        {
+            printInOrder(node.get_left());
+            System.out.print(" " + node.get_value() + " ");
+            printInOrder(node.get_right());
+        }
 
+    }
+
+    public void printInOrder ()
+    {
+        if(_root == Neil)
+        {
+            System.out.print("- empty tree -");
+        }
+        else
+        {
+            this.printInOrder(_root);
+        }
+    }
+
+    //Tree Successor
+    public BinNode successor (BinNode node)
+    {
+        if (node.get_right() != Neil)
+        {
+            //minimum in the sub tree
+            BinNode index = node.get_right();
+            while (index.get_left() != Neil) {
+                index = index.get_left();
+            }
+            return index;
+        }
+
+        BinNode parent=node.get_parent(); //Holds the parent
+        while((parent != Neil)&&(parent.get_right() == node))
+        {
+            node=parent;
+            parent=parent.get_parent();
+        }
+        return parent; //This is the successor.
+    }
 }
 
