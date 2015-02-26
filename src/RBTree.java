@@ -23,12 +23,16 @@ public class RBTree {
         }
         y.set_parent(x.get_parent());
 
-        if (x.get_parent() == Neil) {
+        if (x.get_parent() == Neil)
+        {
             _root = y;
-        } else if (x == x.get_parent().get_left()) {
-            x.get_parent().set_left(y);
-        } else {
-            x.get_parent().set_right(y);
+        }
+        else {
+            if (x == x.get_parent().get_left()) {
+                x.get_parent().set_left(y);
+            } else {
+                x.get_parent().set_right(y);
+            }
         }
 
         y.set_left(x);
@@ -48,10 +52,12 @@ public class RBTree {
         y.set_parent(x.get_parent());
         if (x.get_parent() == Neil) {
             _root = y;
-        } else if (x == x.get_parent().get_right()) {
-            x.get_parent().set_right(y);
         } else {
-            x.get_parent().set_left(y);
+            if (x == x.get_parent().get_right()) {
+                x.get_parent().set_right(y);
+            } else {
+                x.get_parent().set_left(y);
+            }
         }
 
         y.set_right(x);
@@ -305,6 +311,22 @@ public class RBTree {
             }
         }
         x.set_color(Color.BLACK);
+    }
+
+    public BinNode treeSearch(String key)
+    {
+        BinNode x = _root;
+        while(x != Neil && key != x.get_value())
+        {
+            if(key.compareTo(x.get_value())<0) {
+                x = x.get_left();
+            }
+            else {
+                x = x.get_right();
+            }
+        }
+
+        return x;
     }
 }
 

@@ -6,7 +6,7 @@ public class Main
 
         RBTree alexTree = new RBTree();
 
-        String [] words = { "stas", "hat", "cat", "louie", "fruhstuk", "banana", "aadwark", "llz","yoyo","derp", "zzz"};
+        String [] words = { "aa","bb","cc","dd","ee","ff","gg","hh","ii","jj","kk","ll","mm","nn","oo","pp","qq","rr","ss","tt","uu","vv","ww","xx","yy","zz"};
         for(int i=0; i<words.length; i++)
         {
             alexTree.rbInsert(new BinNode(words[i]));
@@ -14,6 +14,7 @@ public class Main
             alexTree.printInOrder();
         }
 
+        //BinNode banana = alexTree.treeSearch("banana");
         for(int i=0; i<words.length; i++)
         {
             alexTree.rbDelete(alexTree.get_root());
