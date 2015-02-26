@@ -6,7 +6,9 @@ public class Main
 
         RBTree alexTree = new RBTree();
 
-        String [] words = { "aa","bb","cc","dd","ee","ff","gg","hh","ii","jj","kk","ll","mm","nn","oo","pp","qq","rr","ss","tt","uu","vv","ww","xx","yy","zz"};
+        String [] words = { "aa","bb","cc","dd","ee","ff","gg","hh","ii","jj","kk","ll","mm","nn","oo","pp","qq","rr","ss","tt","uu","vv","ww","xx","yy","zz",};
+
+
         for(int i=0; i<words.length; i++)
         {
             alexTree.rbInsert(new BinNode(words[i]));
