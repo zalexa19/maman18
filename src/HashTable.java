@@ -35,7 +35,7 @@ public class HashTable
 
     }
 
-    public ListNode searchHash (String key)
+    public String searchHash (String key)
     {
         int index = hashCovert(key);
         ListNode temp=_hashTable[index];
@@ -43,7 +43,7 @@ public class HashTable
         {
             if (temp.get_value()==key)
             {
-                return temp;
+                return temp.get_value();
             }
             else
             {
@@ -67,11 +67,12 @@ public class HashTable
         }
 
         long sum=0;
-        for (i=0;i<ascii.length;i++)
+        for (int i=0;i<ascii.length;i++)
         {
-            sum=sum+ascii[i];
+            sum=sum+ascii[i] * i;
         }
 
+        //use devision method to calculate index
         return (int)Math.floor(((sum*PHI)%1)*_hashTable.length);
     }
 }

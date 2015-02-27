@@ -6,9 +6,9 @@ public class ListNode
     private String _value;
     private ListNode _next;
 
-    public ListNode (String _value)
+    public ListNode (String value)
     {
-        _value=_value;
+        _value=value;
         _next=null;
     }
 
