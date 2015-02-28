@@ -1,6 +1,14 @@
 /**
- * Created by Alexa on 15/02/2015.
+ * Representation of a single red black tree node
+ *
+ * Maman 18
+ * Date:        28/02/2015
+ * Course:      20407
+ * Semester:    2015a
+ * By:          Stas Seldin     (311950943)
+ *              Alex Zablotsky  (314494964)
  */
+
 public class BinNode
 {
     private String _value;
@@ -25,7 +33,6 @@ public class BinNode
         this._left=left;
         this._right=right;
         this._parent=parent;
-
     }
 
 

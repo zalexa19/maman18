@@ -1,5 +1,12 @@
 /**
- * Created by Alexa on 25/02/2015.
+ * Red-Black Tree implementation
+ *
+ * Maman 18
+ * Date:        28/02/2015
+ * Course:      20407
+ * Semester:    2015a
+ * By:          Stas Seldin     (311950943)
+ *              Alex Zablotsky  (314494964)
  */
 public class RBTree
 {
@@ -19,7 +26,12 @@ public class RBTree
         return this._root;
     }
 
-    //Left Rotate
+
+    /**
+     * This method performs a left rotation on the Red-Black tree
+     * Runtime Complexity: O(1)
+     * @param x The tree node to rotate around
+     */
     private void leftRotate(BinNode x)
     {
         BinNode y = x.get_right();
@@ -52,7 +64,11 @@ public class RBTree
     }
 
 
-    //Right Rotate
+    /**
+     * This method performs a right rotation on the Red-Black tree
+     * Runtime Complexity: O(1)
+     * @param x The tree node to rotate around
+     */
     private void rightRotate(BinNode x)
     {
         BinNode y = x.get_left();
@@ -84,6 +100,11 @@ public class RBTree
         x.set_parent(y);
     }
 
+    /**
+     * Insert a new node in the red black tree
+     * Runtime Complexity: O(lgn)
+     * @param z Tree node to insert
+     */
     public void rbInsert(BinNode z)
     {
         //empty tree
@@ -138,6 +159,11 @@ public class RBTree
         rbInsertFixup(z);
     }
 
+    /**
+     * Fix any red black tree violations after insert
+     * Runtime Complexity: O(lgn)
+     * @param z Tree node to perform the fix on
+     */
     private void rbInsertFixup(BinNode z)
     {
         while (z.get_parent().get_color() == Color.RED)
@@ -197,6 +223,10 @@ public class RBTree
         _root.set_color(Color.BLACK);
     }
 
+    /**
+     * Print the tree in a sorted order (run function)
+     * Runtime Complexity: O(n)
+     */
     public void printInOrder()
     {
         if (_root == Neil)
@@ -209,20 +239,29 @@ public class RBTree
         }
     }
 
+    /**
+     * Print the tree in a sorted order (recursive method)
+     * Runtime Complexity: O(n)
+     */
     private void printInOrder(BinNode node)
     {
         if (node != Neil)
         {
             printInOrder(node.get_left());
-            System.out.print(" " + node.get_value() + " ");
+            System.out.print(node.get_value() + " ");
             printInOrder(node.get_right());
         }
 
     }
 
+    /**
+     * Find the lowest value of the tree
+     * Runtime Complexity: O(lgn)
+     * @return The node with the lowest value. (The first item in an ordered list)
+     */
     public BinNode minimum()
     {
-        BinNode index = _root.get_left();
+        BinNode index = _root;
         while (index.get_left() != Neil)
         {
             index = index.get_left();
@@ -230,7 +269,12 @@ public class RBTree
         return index;
     }
 
-    //Tree Successor
+    /**
+     * Returns the smallest node who has bigger value than the given node
+     * Runtime Complexity: O(lgn)
+     * @param node The node we would like to find the successor
+     * @return The given node's successor
+     */
     public BinNode successor(BinNode node)
     {
         if (node.get_right() != Neil)
@@ -255,6 +299,13 @@ public class RBTree
     }
 
 
+    /**
+     * Removes a node from a red black tree.
+     * @param z The node to remove
+     * Runtime Complexity: O(lgn)
+     * @return The removed node
+     *
+     */
     public BinNode rbDelete(BinNode z)
     {
         BinNode y;
@@ -305,6 +356,11 @@ public class RBTree
         return y;
     }
 
+    /**
+     * Fix any red black tree violations after delete
+     * Runtime Complexity: O(lgn)
+     * @param x Tree node to perform the fix on
+     */
     private void rbDeleteFixup(BinNode x)
     {
         BinNode w;
@@ -377,6 +433,13 @@ public class RBTree
         x.set_color(Color.BLACK);
     }
 
+
+    /**
+     * Find a key in a red black tree
+     * Runtime Complexity: O(lgn)
+     * @param key the key value to search for
+     * @return the node with the given key. If the is not in the tree it will return Tree's Nil value
+     */
     public BinNode treeSearch(String key)
     {
         BinNode x = _root;

@@ -1,5 +1,12 @@
 /**
- * Created by Alexa on 27/02/2015.
+ * Representation of a node in a linked list
+ *
+ * Maman 18
+ * Date:        28/02/2015
+ * Course:      20407
+ * Semester:    2015a
+ * By:          Stas Seldin     (311950943)
+ *              Alex Zablotsky  (314494964)
  */
 public class ListNode
 {
