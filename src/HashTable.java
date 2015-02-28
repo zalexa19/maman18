@@ -59,7 +59,7 @@ public class HashTable
     /**
      * Search and return a key from the hash table
      * Runtime complexity: O(1+alpha)
-     * @param key the keay to serach for
+     * @param key the key to search for
      * @return the key's value. If the key does not exists in the table, return null
      */
     public String searchHash (String key)

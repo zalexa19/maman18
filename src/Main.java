@@ -31,7 +31,7 @@ public class Main
             return;
         }
 
-        //dictionary.analyzeHash();
+        dictionary.analyzeHash();
 
         //Load user text file input
         RBTree input = new RBTree();
