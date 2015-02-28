@@ -377,7 +377,7 @@ public class RBTree
     public BinNode treeSearch(String key)
     {
         BinNode x = _root;
-        while (x != Neil && key != x.get_value())
+        while (x != Neil && !key.equals(x.get_value()))
         {
             if (key.compareTo(x.get_value()) < 0)
             {

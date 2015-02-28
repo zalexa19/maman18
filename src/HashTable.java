@@ -1,5 +1,4 @@
 import java.io.UnsupportedEncodingException;
-import java.security.KeyStore;
 
 /**
  * Created by Alexa on 27/02/2015.
@@ -16,6 +15,12 @@ public class HashTable
 
     public void insertHash (String key)
     {
+
+        if(searchHash(key)!=null)
+        {
+            return;
+        }
+
         int index = hashCovert(key);
 
         if (_hashTable[index] == null)
@@ -41,7 +46,7 @@ public class HashTable
         ListNode temp=_hashTable[index];
         while (temp != null)
         {
-            if (temp.get_value()==key)
+            if (temp.get_value().equals(key))
             {
                 return temp.get_value();
             }
@@ -69,10 +74,55 @@ public class HashTable
         long sum=0;
         for (int i=0;i<ascii.length;i++)
         {
-            sum=sum+ascii[i] * i;
+            sum += ascii[i] * ascii[i] * (i+1) * (i+1);
         }
 
-        //use devision method to calculate index
+        //use division method to calculate index
         return (int)Math.floor(((sum*PHI)%1)*_hashTable.length);
+    }
+
+    public void analyzeHash()
+    {
+        int max=0,sum=0;
+        final int COUNTER_SCOPE = 20;
+        int counter[] = new int[COUNTER_SCOPE+1];
+
+        for (int i = 0; i < _hashTable.length; i++)
+        {
+            int listLength = 0;
+            ListNode l = _hashTable[i];
+            while(l!=null)
+            {
+                l=l.get_next();
+                listLength++;
+            }
+            sum+=listLength;
+            if(listLength>max) {
+                max = listLength;
+            }
+
+            if(listLength<COUNTER_SCOPE)
+            {
+                counter[listLength]++;
+            }
+            else
+            {
+                counter[COUNTER_SCOPE]++;
+            }
+        }
+
+        System.out.println("Analyzing hash:");
+        System.out.println("Hash size: "+_hashTable.length);
+        System.out.println("Total records: "+sum);
+        System.out.println("alpha =  "+(float)sum/_hashTable.length);
+
+        System.out.println("List length\t\tNumber of cells");
+        for (int i = 0; i < counter.length-1; i++)
+        {
+            System.out.println(i + "\t\t\t\t\t"+counter[i]);
+        }
+
+        System.out.println( (COUNTER_SCOPE)+ "+\t\t\t\t\t"+counter[COUNTER_SCOPE]);
+        System.out.println("longest linked list: "+max);
     }
 }

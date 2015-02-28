@@ -1,39 +1,44 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.net.URL;
+import java.util.Scanner;
 
 public class Main
 {
 
-    public static void main(String[] args) {
-
-        RBTree alexTree = new RBTree();
-
-        String [] words = { "aa","bb","cc","dd","ee","ff","gg","hh","ii","jj","kk","ll","mm","nn","oo","pp","qq","rr","ss","tt","uu","vv","ww","xx","yy","zz",};
+    public static void main(String[] args)
+    {
 
         HashTable hash = new HashTable(100000);
-        hash.insertHash("stas");
-        hash.insertHash("sats");
-        hash.insertHash("alex");
-        hash.insertHash("alexa");
-
-        String result = hash.searchHash("stas");
-        String result2 = hash.searchHash("sats");
-        String result3 = hash.searchHash("tass");
-        String result4 = hash.searchHash("aaa");
-
-        for(int i=0; i<words.length; i++)
+        try
         {
-            alexTree.rbInsert(new BinNode(words[i]));
-            System.out.println();
-            //alexTree.printInOrder();
+            loadDictionary("dictionary.txt", hash);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
-        //BinNode banana = alexTree.treeSearch("banana");
-        for(int i=0; i<words.length; i++)
-        {
-            alexTree.rbDelete(alexTree.get_root());
-            System.out.println();
-            //alexTree.printInOrder();
+        hash.analyzeHash();
+
+    }
+
+    public static void loadDictionary(String filePath, HashTable hashTable) throws Exception
+    {
+        URL path = ClassLoader.getSystemResource(filePath);
+        if(path==null) {
+            throw new FileNotFoundException(filePath);
         }
 
+        File file = new File(path.toURI());
+        Scanner sc = new Scanner(file);
+
+        while (sc.hasNextLine())
+        {
+            String word = sc.nextLine();
+            hashTable.insertHash(word.toLowerCase());
+        }
+        sc.close();
     }
 
 }
