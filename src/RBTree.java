@@ -214,17 +214,20 @@ public class RBTree
         if (node != Neil)
         {
             printInOrder(node.get_left());
-            if (node == _root)
-            {
-                System.out.print(" [" + node.get_value() + "] ");
-            }
-            else
-            {
-                System.out.print(" " + node.get_value() + " ");
-            }
+            System.out.print(" " + node.get_value() + " ");
             printInOrder(node.get_right());
         }
 
+    }
+
+    public BinNode minimum()
+    {
+        BinNode index = _root.get_left();
+        while (index.get_left() != Neil)
+        {
+            index = index.get_left();
+        }
+        return index;
     }
 
     //Tree Successor
